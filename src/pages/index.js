@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import AppBulletList from '../bullet_components/AppBulletList.js'
-import AppNavBar from '../bullet_components/AppNavBar.js'
+import AppBulletList from '../components/AppBulletList.js'
+import AppNavBar from '../components/AppNavBar.js'
 
 export default function Home() {
   let title = "My Bullet Journal"

@@ -1,5 +1,4 @@
 import React from 'react'
-import AppBulletListBody from './AppBulletListBody'
 
 const AppBulletListTitle = ({title}) => (
     <div>

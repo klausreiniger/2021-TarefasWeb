@@ -8,38 +8,42 @@ import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 
-const styledIcon = styled(CheckIcon)`
-    min-width: 5px;
-    min-height: 5px;
-    color: blue;
-    opacity: ${props => props.isSet == "true" ? "1" : "0.2"}
+const StyledTypo = styled(Typography)`
+  background-color: ${props => props.green ? "green" : "transparent"};
+`;
+
+const StyledButton = styled(Button)`
+  ${props => props.isVisible ? "" : "display: none"}
 `;
 
 function AppBullet(props) {
-    const [status, setstatus] = useState(false)
+    const [status, setStatus] = useState(false)
     return (
         <Card key={props.key} sx={{ minWidth: 275 }}>
-        <CardContent>
-           <Typography variant="h5" component="div">
-             {props.type}
-           </Typography>
-           <Typography variant="body2">
-             {props.content}
-           </Typography>
-         </CardContent>
-         <CardActions>
-           <Button size="small" onclick={
-               () => {setstatus(true)}
-           }>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {props.type}
+            </Typography>
+            <Typography variant="body2">
+              {props.content}
+            </Typography>
+            <br/>
+            <StyledTypo green={status} variant="body2">
+              {status ? "Done" : "To Do"}
+            </StyledTypo>
+          </CardContent>
+          <CardActions>
+            <StyledButton isVisible={!status} size="small" onClick={
+               () => {setStatus(true)}
+            }>
                 <CheckIcon/>               
-                <styledIcon isSet={status ? "true" : "false"}/>
-            </Button>
-            <Button size="small" onclick={
-               () => {setstatus(false)}
-           }>
-                <styledIcon as="ClearIcon" isSet={status ? "false" : "true"}/>
-            </Button>
-         </CardActions>
+            </StyledButton>
+            <StyledButton isVisible={status} size="small" onClick={
+               () => {setStatus(false)}
+            }>
+                <ClearIcon/>
+            </StyledButton>
+          </CardActions>
        </Card>
     )
 }
